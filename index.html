@@ -54,6 +54,9 @@ header { display: flex; align-items: center; gap: 16px; justify-content: space-b
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok) 60%, transparent); } 70% { box-shadow: 0 0 0 8px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
 button.icon { border: 1px solid var(--line); background: var(--card); color: var(--muted); border-radius: 10px; height: 34px; width: 34px; cursor: pointer; display: grid; place-items: center; }
 button.icon:hover { color: var(--ink); }
+a.run { display: inline-flex; align-items: center; gap: 7px; height: 34px; padding: 0 13px; border-radius: 10px; background: var(--brand); color: #fff;
+  font-size: 13px; font-weight: 600; text-decoration: none; }
+a.run:hover { filter: brightness(1.08); }
 
 .hero { margin: 26px 0 22px; padding: 26px 28px; border-radius: 20px; border: 1px solid var(--line); background: var(--card);
   backdrop-filter: blur(14px); box-shadow: var(--shadow); display: flex; align-items: center; gap: 18px; position: relative; overflow: hidden; }
@@ -121,6 +124,9 @@ footer { margin-top: 40px; color: var(--faint); font-size: 12px; text-align: cen
     </div>
     <div class="tools">
       <span class="live"><i></i><span id="updated">Loading…</span></span>
+      <a class="run" href="https://github.com/vinaykumarhs-a11y/exotel-demo-tester/actions/workflows/demo-test.yml" target="_blank" rel="noopener"
+         title="Opens GitHub Actions: click 'Run workflow' there (needs access to the repo). Each run places real bot calls.">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4v16l13-8z"/></svg>Run test now ↗</a>
       <button class="icon" id="theme" title="Toggle theme" aria-label="Toggle theme">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
       </button>
