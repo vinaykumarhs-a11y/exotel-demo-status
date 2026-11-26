@@ -488,7 +488,80 @@
    },
    "media": null,
    "run_url": "https://github.com/vinaykumarhs-a11y/exotel-demo-tester/actions/runs/45835637224"
+  },
+  {
+   "id": "45844573578-ecc-6x-harmony-engg-azureqa-ameyo-net",
+   "system": "ECC 6x (Harmony)",
+   "check": "Agent flow + voicebot transfer",
+   "suite": "manual",
+   "started": "2026-11-26T15:00:28Z",
+   "duration_s": 146,
+   "status": "pass",
+   "steps": [
+    {
+     "label": "Login",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Open campaign list",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Select BFS_Campaign",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Click Next",
+     "ok": true,
+     "note": "home page loaded"
+    },
+    {
+     "label": "Mark as Available",
+     "ok": true,
+     "note": "status is no longer Unavailable"
+    },
+    {
+     "label": "QA bot connected to main bot (Legs, direct-call fallback)",
+     "ok": true,
+     "note": "Legs bridge failed → fallback used: QA bot called the main bot directly (call 73dae33c68…)"
+    },
+    {
+     "label": "Transferred call reached agent",
+     "ok": true,
+     "note": "37s after bridging (saw 'Incoming')"
+    },
+    {
+     "label": "Answer the call",
+     "ok": true,
+     "note": "clicked ACCEPT"
+    },
+    {
+     "label": "Call Connected",
+     "ok": true,
+     "note": "Call Connected, timer 00:00:08 (Transfer (Queue), •••)"
+    },
+    {
+     "label": "AI Assistant tab (Transfer Summary)",
+     "ok": true,
+     "note": "clicked 'AI Assistant'; AI Assist panel open (no Transfer Summary yet)"
+    },
+    {
+     "label": "Agent Assist suggestion",
+     "ok": true,
+     "note": "\"• AI Assistant Alisa initiated a transfer to an ExoBank specialist.\""
+    }
+   ],
+   "components": {
+    "Agent login": "pass",
+    "Voicebot → agent transfer": "pass",
+    "Agent Assist": "pass"
+   },
+   "media": null,
+   "run_url": "https://github.com/vinaykumarhs-a11y/exotel-demo-tester/actions/runs/45844573578"
   }
  ],
- "updated": "2026-11-26T14:10:20Z"
+ "updated": "2026-11-26T15:02:54Z"
 }
