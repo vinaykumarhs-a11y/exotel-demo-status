@@ -216,7 +216,80 @@
    },
    "media": null,
    "run_url": "https://github.com/vinaykumarhs-a11y/exotel-demo-tester/actions/runs/45760502824"
+  },
+  {
+   "id": "45762329673-ecc-6x-harmony-engg-azureqa-ameyo-net",
+   "system": "ECC 6x (Harmony)",
+   "check": "Agent flow + voicebot transfer",
+   "suite": "manual",
+   "started": "2026-11-26T05:37:35Z",
+   "duration_s": 149,
+   "status": "fail",
+   "steps": [
+    {
+     "label": "Login",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Open campaign list",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Select BFS_Campaign",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Click Next",
+     "ok": true,
+     "note": "home page loaded"
+    },
+    {
+     "label": "Mark as Available",
+     "ok": true,
+     "note": "status is no longer Unavailable"
+    },
+    {
+     "label": "QA bot connected to main bot (Legs, direct-call fallback)",
+     "ok": true,
+     "note": "Legs bridge: all legs answered and joined"
+    },
+    {
+     "label": "Transferred call reached agent",
+     "ok": true,
+     "note": "36s after bridging (saw 'answer button')"
+    },
+    {
+     "label": "Answer the call",
+     "ok": true,
+     "note": "clicked ACCEPT"
+    },
+    {
+     "label": "Call Connected",
+     "ok": true,
+     "note": "Call Connected, timer 00:00:06 (Transfer (Queue), •••)"
+    },
+    {
+     "label": "AI Assistant tab (Transfer Summary)",
+     "ok": true,
+     "note": "clicked 'AI Assistant'; Transfer Summary shown"
+    },
+    {
+     "label": "Agent Assist suggestion",
+     "ok": false,
+     "note": "No new Agent Assist suggestion within 60s after opening the tab"
+    }
+   ],
+   "components": {
+    "Agent login": "pass",
+    "Voicebot → agent transfer": "pass",
+    "Agent Assist": "fail"
+   },
+   "media": null,
+   "run_url": "https://github.com/vinaykumarhs-a11y/exotel-demo-tester/actions/runs/45762329673"
   }
  ],
- "updated": "2026-11-26T05:22:08Z"
+ "updated": "2026-11-26T05:40:05Z"
 }
