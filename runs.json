@@ -120,7 +120,55 @@
    },
    "media": null,
    "run_url": "https://github.com/vinaykumarhs-a11y/exotel-demo-tester/actions/runs/45758710562"
+  },
+  {
+   "id": "45759421479-ecc-6x-harmony-engg-azureqa-ameyo-net",
+   "system": "ECC 6x (Harmony)",
+   "check": "Agent flow + voicebot transfer",
+   "suite": "manual",
+   "started": "2026-11-26T05:07:07Z",
+   "duration_s": 81,
+   "status": "fail",
+   "steps": [
+    {
+     "label": "Login",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Open campaign list",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Select BFS_Campaign",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Click Next",
+     "ok": true,
+     "note": "home page loaded"
+    },
+    {
+     "label": "Mark as Available",
+     "ok": true,
+     "note": "status is no longer Unavailable"
+    },
+    {
+     "label": "QA bot + main bot bridged (Legs API)",
+     "ok": false,
+     "note": "QA bot hung up while bridging"
+    }
+   ],
+   "components": {
+    "Agent login": "pass",
+    "Voicebot → agent transfer": "fail",
+    "Agent Assist": "blocked"
+   },
+   "media": null,
+   "run_url": "https://github.com/vinaykumarhs-a11y/exotel-demo-tester/actions/runs/45759421479"
   }
  ],
- "updated": "2026-11-26T05:01:30Z"
+ "updated": "2026-11-26T05:08:28Z"
 }
