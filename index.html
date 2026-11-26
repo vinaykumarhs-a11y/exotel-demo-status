@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exotel ECC 6x Status</title>
+<meta name="description" content="Live status of Exotel demo system checks">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%233B4FB5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --bg: #f6f7fb; --bg2: #eef0f8; --card: rgba(255,255,255,.78); --line: rgba(20,24,48,.08);
+  --ink: #12152b; --muted: #5b6180; --faint: #8b90ab;
+  --brand: #3B4FB5; --brand2: #6a7be8;
+  --ok: #12a150; --ok-bg: #e6f7ee; --bad: #e5383b; --bad-bg: #fdecec; --warn: #d98e04; --idle: #c9cddd;
+  --shadow: 0 1px 2px rgba(18,21,43,.04), 0 8px 28px rgba(18,21,43,.06);
+  --logo-filter: none;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0b0d17; --bg2: #11142a; --card: rgba(22,25,46,.72); --line: rgba(255,255,255,.08);
+  --ink: #eef0ff; --muted: #a3a9c9; --faint: #6f7596;
+  --brand: #7d8cff; --brand2: #a8b3ff;
+  --ok: #34d17a; --ok-bg: rgba(52,209,122,.12); --bad: #ff5c60; --bad-bg: rgba(255,92,96,.13); --idle: #2a2f4d;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+  --logo-filter: invert(1) hue-rotate(180deg) saturate(1.4);
+}}
+:root[data-theme="dark"] {
+  --bg: #0b0d17; --bg2: #11142a; --card: rgba(22,25,46,.72); --line: rgba(255,255,255,.08);
+  --ink: #eef0ff; --muted: #a3a9c9; --faint: #6f7596;
+  --brand: #7d8cff; --brand2: #a8b3ff;
+  --ok: #34d17a; --ok-bg: rgba(52,209,122,.12); --bad: #ff5c60; --bad-bg: rgba(255,92,96,.13); --idle: #2a2f4d;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+  --logo-filter: invert(1) hue-rotate(180deg) saturate(1.4);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif; color: var(--ink);
+  background: radial-gradient(1200px 600px at 10% -10%, color-mix(in srgb, var(--brand) 14%, transparent), transparent 60%),
+              radial-gradient(900px 500px at 110% 10%, color-mix(in srgb, var(--brand2) 12%, transparent), transparent 60%),
+              var(--bg);
+  min-height: 100vh; -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1120px; margin: 0 auto; padding: 28px 16px 64px; }
+header { display: flex; align-items: center; gap: 16px; justify-content: space-between; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand img { height: 30px; filter: var(--logo-filter); }
+.brand .sep { width: 1px; height: 26px; background: var(--line); }
+.brand h1 { font-size: 17px; font-weight: 600; margin: 0; letter-spacing: -.01em; color: var(--muted); }
+.tools { display: flex; align-items: center; gap: 10px; color: var(--faint); font-size: 13px; }
+.live { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); }
+.live i { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 0 var(--ok); animation: pulse 2s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok) 60%, transparent); } 70% { box-shadow: 0 0 0 8px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+button.icon { border: 1px solid var(--line); background: var(--card); color: var(--muted); border-radius: 10px; height: 34px; width: 34px; cursor: pointer; display: grid; place-items: center; }
+button.icon:hover { color: var(--ink); }
+
+.hero { margin: 26px 0 22px; padding: 26px 28px; border-radius: 20px; border: 1px solid var(--line); background: var(--card);
+  backdrop-filter: blur(14px); box-shadow: var(--shadow); display: flex; align-items: center; gap: 18px; position: relative; overflow: hidden; }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--hero-tint, transparent), transparent 55%); opacity: .55; pointer-events: none; }
+.hero.ok { --hero-tint: var(--ok-bg); } .hero.bad { --hero-tint: var(--bad-bg); }
+.card .ic { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: color-mix(in srgb, var(--brand) 10%, transparent); color: var(--brand); flex: none; }
+.sys-title { display: flex; gap: 12px; align-items: center; }
+.hero .badge { width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; flex: none; z-index: 1; }
+.hero.ok .badge { background: var(--ok-bg); color: var(--ok); } .hero.bad .badge { background: var(--bad-bg); color: var(--bad); }
+.hero h2 { margin: 0; font-size: 24px; letter-spacing: -.02em; z-index: 1; position: relative; }
+.hero p { margin: 4px 0 0; color: var(--muted); font-size: 14px; z-index: 1; position: relative; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+.card { border-radius: 18px; border: 1px solid var(--line); background: var(--card); backdrop-filter: blur(14px); box-shadow: var(--shadow); padding: 20px 20px 18px; }
+.sys-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.sys-head h3 { margin: 0; font-size: 16px; letter-spacing: -.01em; }
+.sys-head .sub { color: var(--faint); font-size: 12.5px; margin-top: 3px; }
+.pill { font-size: 12px; font-weight: 600; padding: 5px 10px; border-radius: 999px; white-space: nowrap; display: inline-flex; gap: 6px; align-items: center; }
+.pill.ok { color: var(--ok); background: var(--ok-bg); } .pill.bad { color: var(--bad); background: var(--bad-bg); }
+.pill.blk { color: var(--warn); background: color-mix(in srgb, var(--warn) 13%, transparent); }
+.pill i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.bars { display: flex; gap: 3px; margin: 18px 0 6px; height: 34px; align-items: stretch; }
+.bars span { flex: 1; border-radius: 4px; background: var(--idle); position: relative; transition: transform .15s; cursor: default; }
+.bars span.ok { background: var(--ok); } .bars span.bad { background: var(--bad); } .bars span.blk { background: var(--warn); opacity: .75; }
+.bars span:hover { transform: scaleY(1.12); }
+.bars span:hover::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+  background: var(--ink); color: var(--bg); font-size: 11.5px; padding: 5px 8px; border-radius: 7px; white-space: nowrap; z-index: 5; }
+.bars-legend { display: flex; justify-content: space-between; color: var(--faint); font-size: 11.5px; }
+.stats { display: flex; gap: 18px; margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); font-size: 12.5px; color: var(--muted); flex-wrap: wrap; }
+.stats b { color: var(--ink); font-weight: 600; }
+
+h4.section { margin: 34px 0 12px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--faint); font-weight: 600; }
+.steps { list-style: none; margin: 16px 0 0; padding: 0; position: relative; }
+.steps li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; padding: 7px 0; position: relative; }
+.steps li::before { content: ""; position: absolute; left: 12px; top: 30px; bottom: -8px; width: 2px; background: var(--line); }
+.steps li:last-child::before { display: none; }
+.dot { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 700; z-index: 1; }
+.dot.ok { background: var(--ok-bg); color: var(--ok); } .dot.bad { background: var(--bad-bg); color: var(--bad); box-shadow: 0 0 0 4px color-mix(in srgb, var(--bad) 14%, transparent); }
+.steps .lbl { font-size: 14px; font-weight: 500; padding-top: 3px; }
+.steps .note { font-size: 12.5px; color: var(--muted); margin-top: 2px; line-height: 1.45; word-break: break-word; }
+.steps li.bad .lbl { color: var(--bad); font-weight: 600; }
+.links { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+.links a { font-size: 12.5px; color: var(--brand); text-decoration: none; padding: 6px 10px; border-radius: 9px; background: color-mix(in srgb, var(--brand) 9%, transparent); }
+.links a:hover { background: color-mix(in srgb, var(--brand) 16%, transparent); }
+
+.runs { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13.5px; }
+.runs th { text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--faint); font-weight: 600; padding: 0 12px 10px; }
+.runs td { padding: 12px; border-top: 1px solid var(--line); vertical-align: top; }
+.runs tr.row { cursor: pointer; } .runs tr.row:hover td { background: color-mix(in srgb, var(--brand) 5%, transparent); }
+.runs .mono { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12px; color: var(--muted); }
+.runs .fail { color: var(--bad); }
+.runs tr.detail td { padding: 0 12px 14px; border-top: none; }
+.empty { text-align: center; color: var(--faint); padding: 60px 0; }
+footer { margin-top: 40px; color: var(--faint); font-size: 12px; text-align: center; }
+@media (max-width: 640px) { .hero { padding: 20px; } .hero h2 { font-size: 20px; } .hide-sm { display: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <img src="exotel-logo.png" alt="Exotel">
+      <span class="sep"></span>
+      <h1>ECC 6x · Agent, Transfer &amp; Agent Assist</h1>
+    </div>
+    <div class="tools">
+      <span class="live"><i></i><span id="updated">Loading…</span></span>
+      <button class="icon" id="theme" title="Toggle theme" aria-label="Toggle theme">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <section class="hero" id="hero">
+    <div class="badge" id="hero-badge"></div>
+    <div><h2 id="hero-title">Checking…</h2><p id="hero-sub"></p></div>
+  </section>
+
+  <div class="grid" id="systems"></div>
+
+  <h4 class="section">Current run</h4>
+  <div class="card" id="latest"><div class="empty">No runs yet</div></div>
+
+
+  <footer>Automated checks run on GitHub Actions · page refreshes every minute</footer>
+</div>
+
+<script>
+const ICON_OK = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+const ICON_BAD = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 8v5"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="9.5"/></svg>';
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const fmtIST = iso => new Date(iso).toLocaleString("en-IN", { timeZone: "Asia/Kolkata", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) + " IST";
+const ago = iso => { const s = (Date.now() - new Date(iso)) / 1000; if (s < 90) return "just now"; if (s < 3600) return Math.round(s / 60) + " min ago"; if (s < 86400) return Math.round(s / 3600) + " h ago"; return Math.round(s / 86400) + " d ago"; };
+const dur = s => s == null ? "—" : s < 60 ? `${Math.round(s)}s` : `${Math.floor(s / 60)}m ${Math.round(s % 60)}s`;
+const failedStep = r => (r.steps || []).find(s => !s.ok);
+
+try { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+$("#theme").onclick = () => {
+  const dark = document.documentElement.dataset.theme ? document.documentElement.dataset.theme === "dark"
+    : matchMedia("(prefers-color-scheme: dark)").matches;
+  document.documentElement.dataset.theme = dark ? "light" : "dark";
+  try { localStorage.setItem("theme", document.documentElement.dataset.theme); } catch (e) {}
+};
+
+function stepsHtml(r) {
+  return `<ol class="steps">${(r.steps || []).map(s => `
+    <li class="${s.ok ? "ok" : "bad"}"><span class="dot ${s.ok ? "ok" : "bad"}">${s.ok ? "✓" : "!"}</span>
+      <div><div class="lbl">${esc(s.label)}</div>${s.note ? `<div class="note">${esc(s.note)}</div>` : ""}</div></li>`).join("")}</ol>`;
+}
+function linksHtml(r) {
+  const l = [];
+  if (r.media) l.push(`<a href="${esc(r.media)}" target="_blank" rel="noopener">Screenshots &amp; video ↗ <span style="opacity:.6">(Exotel login)</span></a>`);
+  if (r.run_url) l.push(`<a href="${esc(r.run_url)}" target="_blank" rel="noopener">GitHub run ↗ <span style="opacity:.6">(team)</span></a>`);
+  return l.length ? `<div class="links">${l.join("")}</div>` : "";
+}
+
+function render(data) {
+  const runs = (data.runs || []).slice().sort((a, b) => new Date(b.started) - new Date(a.started));
+  $("#updated").textContent = data.updated ? "Updated " + ago(data.updated) : "No data yet";
+  if (!runs.length) { $("#hero-title").textContent = "No runs yet"; return; }
+
+  const COMPS = [
+    ["Agent login", "Sign in, pick campaign, mark Available", '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>'],
+    ["Voicebot → agent transfer", "QA bot asks for agent, ExoBank transfers, agent accepts", '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3l4 4-4 4"/><path d="M3 7h18"/><path d="M7 21l-4-4 4-4"/><path d="M21 17H3"/></svg>'],
+    ["Agent Assist", "Transfer Summary and live suggestion on the agent screen", '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15.5l-1.9-4.6L5.5 9l4.6-1.4z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></svg>'],
+  ];
+  const cls = st => st === "pass" ? "ok" : st === "fail" ? "bad" : "blk";
+  const word = st => st === "pass" ? "Passing" : st === "fail" ? "Failing" : "Blocked";
+  const latestOf = name => runs.find(r => r.components && r.components[name]);
+  const bad = COMPS.map(c => c[0]).filter(n => { const r = latestOf(n); return r && r.components[n] !== "pass"; });
+  const hero = $("#hero");
+  hero.className = "hero " + (bad.length ? "bad" : "ok");
+  $("#hero-badge").innerHTML = bad.length ? ICON_BAD : ICON_OK;
+  $("#hero-title").textContent = bad.length ? (bad.length === 1 ? `${bad[0]} is ${word(latestOf(bad[0]).components[bad[0]]).toLowerCase()}` : `${bad.length} components need attention`) : "All checks passing";
+  $("#hero-sub").textContent = bad.length
+    ? bad.map(n => { const r = latestOf(n); const f = failedStep(r); return `${n}: ${f ? `failed at "${f.label}"` : "blocked by an earlier step"} · ${ago(r.started)}`; }).join("  ·  ")
+    : `Agent login, transfer and Agent Assist are working · checked ${ago(runs[0].started)}`;
+
+  $("#systems").innerHTML = COMPS.map(([name, sub, icon]) => {
+    const r = latestOf(name);
+    const st = r ? r.components[name] : null;
+    const f = r && st === "fail" ? failedStep(r) : null;
+    const detail = !r ? "Not run yet" : st === "pass" ? "Working" : st === "fail" ? `Failed at "${f ? f.label : "unknown step"}"` : "Not reached: an earlier step failed";
+    return `<div class="card">
+      <div class="sys-head"><div class="sys-title"><span class="ic">${icon}</span><div><h3>${esc(name)}</h3><div class="sub">${esc(sub)}</div></div></div>
+        <span class="pill ${r ? cls(st) : "blk"}"><i></i>${r ? word(st) : "No data"}</span></div>
+      <div class="stats"><span>${esc(detail)}</span>${r ? `<span>Checked <b>${esc(ago(r.started))}</b></span>` : ""}</div>
+    </div>`;
+  }).join("");
+
+  const r = runs[0];
+  $("#latest").innerHTML = `<div class="sys-head"><div><h3>${esc(r.system)}</h3>
+      <div class="sub">${esc(fmtIST(r.started))} · ${r.check && /transfer/i.test(r.check) ? "Login + transfer + Agent Assist" : "Login check"} · took ${dur(r.duration_s)}</div></div>
+      <span class="pill ${r.status === "pass" ? "ok" : "bad"}"><i></i>${r.status === "pass" ? "Passed" : "Failed"}</span></div>
+    ${stepsHtml(r)}${linksHtml(r)}`;
+
+}
+
+async function load() {
+  try {
+    const res = await fetch("runs.json?t=" + Date.now(), { cache: "no-store" });
+    render(res.ok ? await res.json() : { runs: [] });
+  } catch (e) { $("#updated").textContent = "Couldn't load data"; }
+}
+load();
+setInterval(load, 60000);
+</script>
+</body>
+</html>

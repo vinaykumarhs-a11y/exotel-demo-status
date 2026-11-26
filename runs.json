@@ -1,0 +1,78 @@
+{
+ "runs": [
+  {
+   "id": "45748843593-ecc-6x-harmony-engg-azureqa-ameyo-net",
+   "system": "ECC 6x (Harmony)",
+   "check": "Agent flow + voicebot transfer",
+   "suite": "ecc6x_transfer",
+   "started": "2026-11-26T03:26:07Z",
+   "duration_s": 96,
+   "status": "pass",
+   "steps": [
+    {
+     "label": "Login",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Open campaign list",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Select BFS_Campaign",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Click Next",
+     "ok": true,
+     "note": "home page loaded"
+    },
+    {
+     "label": "Mark as Available",
+     "ok": true,
+     "note": "status is no longer Unavailable"
+    },
+    {
+     "label": "QA bot + main bot bridged (Legs API)",
+     "ok": true,
+     "note": "all legs answered and joined the bridge"
+    },
+    {
+     "label": "Transferred call reached agent",
+     "ok": true,
+     "note": "32s after bridging (saw 'Incoming')"
+    },
+    {
+     "label": "Answer the call",
+     "ok": true,
+     "note": "clicked ACCEPT"
+    },
+    {
+     "label": "Call Connected",
+     "ok": true,
+     "note": "Call Connected, timer 00:00:07 (Transfer (Queue), •••)"
+    },
+    {
+     "label": "AI Assistant tab",
+     "ok": true,
+     "note": "Transfer Summary - clicked 'AI Assistant'; AI Assist panel open (no Transfer Summary yet)"
+    },
+    {
+     "label": "Agent Assist suggestion",
+     "ok": true,
+     "note": "\"I'm sorry to hear that. Could you please tell me more about the issue you're experiencing with your card?\""
+    }
+   ],
+   "components": {
+    "Agent login": "pass",
+    "Voicebot → agent transfer": "pass",
+    "Agent Assist": "pass"
+   },
+   "media": null,
+   "run_url": "https://github.com/vinaykumarhs-a11y/exotel-demo-tester/actions/runs/45748843593"
+  }
+ ],
+ "updated": "2026-11-26T03:27:44Z"
+}
