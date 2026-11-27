@@ -780,7 +780,81 @@
    },
    "media": null,
    "run_url": "https://github.com/vinaykumarhs-a11y/exotel-demo-tester/actions/runs/45943442552"
+  },
+  {
+   "id": "45946573927-ecc-6x-harmony-exocare-hospitals-engg-azureqa-ameyo-net",
+   "system": "ECC 6x (Harmony) · ExoCare_Hospitals",
+   "campaign": "ExoCare_Hospitals",
+   "check": "Agent flow + voicebot transfer",
+   "suite": "manual",
+   "started": "2026-11-27T05:34:35Z",
+   "duration_s": 159,
+   "status": "fail",
+   "steps": [
+    {
+     "label": "Login",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Open campaign list",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Select ExoCare_Hospitals",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Click Next",
+     "ok": true,
+     "note": "home page loaded"
+    },
+    {
+     "label": "Mark as Available",
+     "ok": true,
+     "note": "status is no longer Unavailable"
+    },
+    {
+     "label": "QA bot connected to main bot (Legs, direct-call fallback)",
+     "ok": true,
+     "note": "Legs bridge: all legs answered and joined"
+    },
+    {
+     "label": "Transferred call reached agent",
+     "ok": true,
+     "note": "21s after bridging (saw 'Incoming')"
+    },
+    {
+     "label": "Answer the call",
+     "ok": true,
+     "note": "clicked ACCEPT"
+    },
+    {
+     "label": "Call Connected",
+     "ok": true,
+     "note": "Call Connected, timer 00:00:12 (Transfer (Queue), •••)"
+    },
+    {
+     "label": "AI Assistant tab (Transfer Summary)",
+     "ok": true,
+     "note": "clicked 'AI Assistant'; AI Assist panel open (no Transfer Summary yet)"
+    },
+    {
+     "label": "Agent Assist suggestion",
+     "ok": false,
+     "note": "No new Agent Assist suggestion within 60s after opening the tab"
+    }
+   ],
+   "components": {
+    "Agent login": "pass",
+    "Voicebot → agent transfer": "pass",
+    "Agent Assist": "fail"
+   },
+   "media": null,
+   "run_url": "https://github.com/vinaykumarhs-a11y/exotel-demo-tester/actions/runs/45946573927"
   }
  ],
- "updated": "2026-11-27T05:08:47Z"
+ "updated": "2026-11-27T05:37:14Z"
 }
