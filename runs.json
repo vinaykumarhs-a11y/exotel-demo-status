@@ -1076,7 +1076,81 @@
    },
    "media": null,
    "run_url": "https://github.com/vinaykumarhs-a11y/exotel-demo-tester/actions/runs/45949282381"
+  },
+  {
+   "id": "45949775072-ecc-6x-harmony-exocare-hospitals-engg-azureqa-ameyo-net",
+   "system": "ECC 6x (Harmony) · ExoCare_Hospitals",
+   "campaign": "ExoCare_Hospitals",
+   "check": "Agent flow + voicebot transfer",
+   "suite": "manual",
+   "started": "2026-11-27T06:07:12Z",
+   "duration_s": 149,
+   "status": "pass",
+   "steps": [
+    {
+     "label": "Login",
+     "ok": true,
+     "note": "forced login used"
+    },
+    {
+     "label": "Open campaign list",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Select ExoCare_Hospitals",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Click Next",
+     "ok": true,
+     "note": "home page loaded"
+    },
+    {
+     "label": "Mark as Available",
+     "ok": true,
+     "note": "status is no longer Unavailable"
+    },
+    {
+     "label": "QA bot connected to main bot (Legs, direct-call fallback)",
+     "ok": true,
+     "note": "Legs bridge: all legs answered and joined"
+    },
+    {
+     "label": "Transferred call reached agent",
+     "ok": true,
+     "note": "73s after bridging (saw 'Incoming')"
+    },
+    {
+     "label": "Answer the call",
+     "ok": true,
+     "note": "clicked ACCEPT"
+    },
+    {
+     "label": "Call Connected",
+     "ok": true,
+     "note": "Call Connected, timer 00:00:05 (Transfer (Queue), •••)"
+    },
+    {
+     "label": "AI Assistant tab (Transfer Summary)",
+     "ok": true,
+     "note": "clicked 'AI Assistant'; AI Assist panel open (no Transfer Summary yet)"
+    },
+    {
+     "label": "Agent Assist suggestion",
+     "ok": true,
+     "note": "\"No data after filtering or data is NULL for the latest time record\""
+    }
+   ],
+   "components": {
+    "Agent login": "pass",
+    "Voicebot → agent transfer": "pass",
+    "Agent Assist": "pass"
+   },
+   "media": null,
+   "run_url": "https://github.com/vinaykumarhs-a11y/exotel-demo-tester/actions/runs/45949775072"
   }
  ],
- "updated": "2026-11-27T06:06:12Z"
+ "updated": "2026-11-27T06:09:42Z"
 }
