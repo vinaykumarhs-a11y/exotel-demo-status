@@ -1150,7 +1150,61 @@
    },
    "media": null,
    "run_url": "https://github.com/vinaykumarhs-a11y/exotel-demo-tester/actions/runs/45949775072"
+  },
+  {
+   "id": "45950134550-ecc-6x-harmony-inbound-insurance-engg-azureqa-ameyo-net",
+   "system": "ECC 6x (Harmony) · Inbound_Insurance",
+   "campaign": "Inbound_Insurance",
+   "check": "Agent flow + voicebot transfer",
+   "suite": "manual",
+   "started": "2026-11-27T06:10:38Z",
+   "duration_s": 238,
+   "status": "fail",
+   "steps": [
+    {
+     "label": "Login",
+     "ok": true,
+     "note": "forced login used"
+    },
+    {
+     "label": "Open campaign list",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Select Inbound_Insurance",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Click Next",
+     "ok": true,
+     "note": "home page loaded"
+    },
+    {
+     "label": "Mark as Available",
+     "ok": true,
+     "note": "status is no longer Unavailable"
+    },
+    {
+     "label": "QA bot connected to main bot (Legs, direct-call fallback)",
+     "ok": true,
+     "note": "Legs bridge failed → fallback used: QA bot called the main bot directly (call 8a02f770e8…)"
+    },
+    {
+     "label": "Transferred call reached agent",
+     "ok": false,
+     "note": "No call reached the agent within 150s of connecting the bots (call path: direct)"
+    }
+   ],
+   "components": {
+    "Agent login": "pass",
+    "Voicebot → agent transfer": "fail",
+    "Agent Assist": "blocked"
+   },
+   "media": null,
+   "run_url": "https://github.com/vinaykumarhs-a11y/exotel-demo-tester/actions/runs/45950134550"
   }
  ],
- "updated": "2026-11-27T06:09:42Z"
+ "updated": "2026-11-27T06:14:37Z"
 }
