@@ -1002,7 +1002,81 @@
    },
    "media": null,
    "run_url": "https://github.com/vinaykumarhs-a11y/exotel-demo-tester/actions/runs/45948310129"
+  },
+  {
+   "id": "45949282381-ecc-6x-harmony-inbound-insurance-engg-azureqa-ameyo-net",
+   "system": "ECC 6x (Harmony) · Inbound_Insurance",
+   "campaign": "Inbound_Insurance",
+   "check": "Agent flow + voicebot transfer",
+   "suite": "manual",
+   "started": "2026-11-27T06:02:21Z",
+   "duration_s": 231,
+   "status": "fail",
+   "steps": [
+    {
+     "label": "Login",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Open campaign list",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Select Inbound_Insurance",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Click Next",
+     "ok": true,
+     "note": "home page loaded"
+    },
+    {
+     "label": "Mark as Available",
+     "ok": true,
+     "note": "status is no longer Unavailable"
+    },
+    {
+     "label": "QA bot connected to main bot (Legs, direct-call fallback)",
+     "ok": true,
+     "note": "Legs bridge failed → fallback used: QA bot called the main bot directly (call •••ebd…)"
+    },
+    {
+     "label": "Transferred call reached agent",
+     "ok": true,
+     "note": "61s after bridging (saw 'Incoming')"
+    },
+    {
+     "label": "Answer the call",
+     "ok": true,
+     "note": "clicked ACCEPT"
+    },
+    {
+     "label": "Call Connected",
+     "ok": true,
+     "note": "Call Connected, timer 00:00:08 (Transfer (Queue), •••)"
+    },
+    {
+     "label": "AI Assistant tab (Transfer Summary)",
+     "ok": true,
+     "note": "clicked 'AI Assistant'; AI Assist panel open (no Transfer Summary yet)"
+    },
+    {
+     "label": "Agent Assist suggestion",
+     "ok": false,
+     "note": "No Agent Assist suggestion within 60s; Suggestions panel reads: 'Looking for suggestions / InsuranceCrmSelect JourneyJourney TypePolicy PurchaseJourney TypePolicy TypeHealth InsurancePo'"
+    }
+   ],
+   "components": {
+    "Agent login": "pass",
+    "Voicebot → agent transfer": "pass",
+    "Agent Assist": "fail"
+   },
+   "media": null,
+   "run_url": "https://github.com/vinaykumarhs-a11y/exotel-demo-tester/actions/runs/45949282381"
   }
  ],
- "updated": "2026-11-27T05:56:24Z"
+ "updated": "2026-11-27T06:06:12Z"
 }
