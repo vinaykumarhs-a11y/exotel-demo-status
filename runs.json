@@ -1352,7 +1352,81 @@
    },
    "media": null,
    "run_url": "https://github.com/vinaykumarhs-a11y/exotel-demo-tester/actions/runs/45970545316"
+  },
+  {
+   "id": "46071522217-ecc-6x-harmony-bfs-campaign-engg-azureqa-ameyo-net",
+   "system": "ECC 6x (Harmony) · BFS_Campaign",
+   "campaign": "BFS_Campaign",
+   "check": "Agent flow + voicebot transfer",
+   "suite": "schedule",
+   "started": "2026-11-27T21:38:14Z",
+   "duration_s": 116,
+   "status": "pass",
+   "steps": [
+    {
+     "label": "Login",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Open campaign list",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Select BFS_Campaign",
+     "ok": true,
+     "note": ""
+    },
+    {
+     "label": "Click Next",
+     "ok": true,
+     "note": "home page loaded"
+    },
+    {
+     "label": "Mark as Available",
+     "ok": true,
+     "note": "status is no longer Unavailable"
+    },
+    {
+     "label": "QA bot connected to main bot (Legs, direct-call fallback)",
+     "ok": true,
+     "note": "Legs bridge: all legs answered and joined"
+    },
+    {
+     "label": "Transferred call reached agent",
+     "ok": true,
+     "note": "27s after bridging (saw 'answer button')"
+    },
+    {
+     "label": "Answer the call",
+     "ok": true,
+     "note": "clicked ACCEPT"
+    },
+    {
+     "label": "Call Connected",
+     "ok": true,
+     "note": "Call Connected, timer 00:00:13 (Transfer (Queue), •••)"
+    },
+    {
+     "label": "AI Assistant tab (Transfer Summary)",
+     "ok": true,
+     "note": "clicked 'AI Assistant'; AI Assist panel open (no Transfer Summary yet)"
+    },
+    {
+     "label": "Agent Assist suggestion",
+     "ok": true,
+     "note": "\"I'm sorry to hear that. Could you please tell me more about the issue you're experiencing with your card?\""
+    }
+   ],
+   "components": {
+    "Agent login": "pass",
+    "Voicebot → agent transfer": "pass",
+    "Agent Assist": "pass"
+   },
+   "media": null,
+   "run_url": "https://github.com/vinaykumarhs-a11y/exotel-demo-tester/actions/runs/46071522217"
   }
  ],
- "updated": "2026-11-27T09:06:42Z"
+ "updated": "2026-11-27T21:40:11Z"
 }
